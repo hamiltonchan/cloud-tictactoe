@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Tic Tac Toe - Built with AngularJS</title>
+	<link rel="stylesheet" href="style.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script>
+	<script src="https://cdn.firebase.com/v0/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/0.6.0/angularfire.min.js"></script>
+	<script src="script.js"></script>
+</head>
+
+<body x-ng-app="TicTacToe" x-ng-controller="TicTacController">
+	<div class="left">
+		<input type="text" id="p1_name" ng-model="gameNode.player1Name" ng-click="setName1(player1Name)" ng-keyup="removeFocus1($event)" />
+		<div id="identityleft">{{identityX}}</div>
+		<div id="p1_score">{{gameNode.leftScore}}</div>
+		<div id="left_message">{{gameNode.leftMessage}}</div>
+	</div>
+	<div class="right">
+		<input type="text" id="p2_name" ng-model="gameNode.player2Name" ng-click="setName2(player2Name)" ng-keyup="removeFocus2($event)"/>
+		<div id="identityright">{{identityO}}</div>
+		<div id="p2_score">{{gameNode.rightScore}}</div>
+		<div id="right_message">{{gameNode.rightMessage}}</div>
+	</div>
+
+	<div class="board">
+		<h1>Tic Tac Toe</h1>
+		<div class="innerbox" x-ng-repeat="cell in gameNode.cells track by $index" ng-click="drawMark($index)" >
+			{{cell}}
+		</div>
+		<br />
+		<br />
+		<br />
+		<div class="reset" ng-click="clearBoard()">New Game</div>
+	</div>
+
+</body>
+
+</html>
+
